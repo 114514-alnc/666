@@ -571,6 +571,7 @@ class FreeplayState extends MusicBeatState
 
 	override function destroy():Void
 	{
+		Paths.clearUnusedCache(); // 退出歌曲时清空不用的 GPU 纹
 		super.destroy();
 
 		FlxG.autoPause = ClientPrefs.data.autoPause;
