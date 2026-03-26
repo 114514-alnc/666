@@ -60,6 +60,26 @@ import states.TitleState;
 	public var pauseMusic:String = 'Tea Time';
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
+    // [标准 Psych 默认值]
+    public static var language:String = 'en-US'; // 默认英文
+    public static var ghostTapping:Bool = true;
+    public static var downScroll:Bool = false;
+
+    // [被封印的超级功能 - 全部默认关闭]
+    public static var keStyle:Bool = false;          // 默认关闭 KE UI
+    public static var autoGC:Bool = false;           // 默认关闭激进内存清理
+    public static var gpuCaching:Bool = false;       // 默认关闭 GPU 强压
+    public static var dynamicPitch:Bool = false;     // 默认关闭 V-Slice 变调
+    public static var playVideo:Bool = false;        // 默认不加载外部 MP4
+    public static var noteModifier:String = 'None';  // 默认没有任何 JS 视觉特效
+    public static var lowEndMode:Bool = false;       // 默认不开启土豆模式
+    public static var devMode:Bool = false;          // 默认关闭移动端打谱
+    
+    // [全新功能：轨道底图与仿生Bot]
+    public static var laneUnderlay:Bool = false;     // 轨道黑底 (类似 osu!mania)
+    public static var laneAlpha:Float = 0.5;         // 黑底透明度
+    public static var humanizedBot:Bool = false;     // 仿生机器人 (Bot打歌也会有毫秒误差，显得像真人)
+
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
