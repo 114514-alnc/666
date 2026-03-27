@@ -79,6 +79,17 @@ import states.TitleState;
     public static var laneUnderlay:Bool = false;     // 轨道黑底 (类似 osu!mania)
     public static var laneAlpha:Float = 0.5;         // 黑底透明度
     public static var humanizedBot:Bool = false;     // 仿生机器人 (Bot打歌也会有毫秒误差，显得像真人)
+	// 视觉强化
+public static var flashingLights:Bool = true;    // 闪光特效
+public static var cameraZoomOnBeat:Bool = true;  // 随节拍缩放镜头
+public static var scoreZoom:Bool = true;         // 得分时分数文本缩放
+public static var noAntialiasing:Bool = false;   // 全局关闭抗锯齿（极致性能）
+
+// 判定与操作
+public static var customizeGuideline:Bool = true; // 自定义判定线透明度
+public static var safeFrames:Int = 10;           // 判定帧调节 (1-20)
+public static var controllerMode:Bool = false;   // 手柄/虚拟按键模式强化
+
 
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
