@@ -89,6 +89,26 @@ public static var noAntialiasing:Bool = false;   // 全局关闭抗锯齿（极�
 public static var customizeGuideline:Bool = true; // 自定义判定线透明度
 public static var safeFrames:Int = 10;           // 判定帧调节 (1-20)
 public static var controllerMode:Bool = false;   // 手柄/虚拟按键模式强化
+	public static var language:String = 'en-US';       // 默认语言
+	public static var useCJKFont:Bool = false;         // 是否启用 Chinese.ttf 拦截 Alphabet
+
+	// 视觉增强 (内鬼V4 & HUD)
+	public static var dynamicBarColor:Bool = true;     // 内鬼V4风格动态血条颜色
+	public static var sideHud:Bool = false;            // 侧边栏 HUD 开关
+	public static var vSliceSplashes:Bool = false;     // V-Slice 风格 3D 打击特效
+	public static var laneUnderlay:Float = 0;          // 轨道底图透明度 (0为关闭)
+
+	// 性能优化
+	public static var clearCacheOnExit:Bool = true;    // 退出歌曲自动清理缓存
+
+	// 玩法调节
+	public static var songSpeed:Float = 1.0;           // 全局曲速 (1.0 - 3.0)
+	public static var opponentDrainCap:Bool = false;   // 对手吸血保护 (10%保底)
+	public static var sustainAlpha:Float = 0.6;        // 长按音符(面条)透明度
+	public static var safeFrames:Int = 10;             // 判定帧调节
+
+	// 移动端专用
+	public static var storageType:String = '.SP Engine'; // 外部存储文件夹名称
 
 
 	public var gameplaySettings:Map<String, Dynamic> = [
