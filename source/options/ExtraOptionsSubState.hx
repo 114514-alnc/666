@@ -58,6 +58,27 @@ class ExtraOptionsSubState extends BaseOptionsSubState {
             'Mobile Dev Mode', '开启后三指下滑可唤出内置谱面编辑器',
             'devMode', 'bool', false);
         addOption(option);
+        // ==========================================
+        // 📂 第四区：目录与 Mod 兼容 (Storage & Mods)
+        // ==========================================
+        var option:Option = new Option(
+            '引擎数据目录 (Engine Folder)', 
+            '切换读取的外部文件夹。切换后需重启游戏生效！',
+            'engineFolder', 
+            'string', 
+            'SP Engine', 
+            ['SP Engine', 'PsychEngine', 'JSEngine', 'NovaFlare']
+        );
+       addOption(option);
+
+      var option:Option = new Option(
+           '强制 JS 模组兼容', 
+           '欺骗加载的模组，让它们以为在 JS 引擎上运行，以兼容特殊脚本。',
+           'forceJSModCompat', 
+           'bool', 
+            true
+        );
+      addOption(option);
 
         super();
     }
