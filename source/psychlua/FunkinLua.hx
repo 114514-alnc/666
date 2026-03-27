@@ -67,6 +67,13 @@ class FunkinLua {
 		//trace("LuaJIT version: " + Lua.versionJIT());
 
 		//LuaL.dostring(lua, CLENSE);
+       // 在加载 Lua 脚本时，如果开启了 JS 兼容模式，忽略一些特有的缺失报错
+       if (ClientPrefs.forceJSModCompat) {
+          lua.set("isJSEngine", true); // 欺骗 Mod，让它以为这是 JS 引擎
+          lua.set("isMobile", true);   // 告诉 Mod 正在手机上运行，以便调出屏幕按键
+        } else {
+     lua.set("isJSEngine", false);
+}
 
 		this.scriptName = scriptName.trim();
 		var game:PlayState = PlayState.instance;
