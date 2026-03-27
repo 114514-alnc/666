@@ -279,7 +279,10 @@ class PlayState extends MusicBeatState
 		instance = this;
 
 		PauseSubState.songName = null; //Reset to default
-		playbackRate = ClientPrefs.getGameplaySetting('songspeed');
+		// 让引擎的主播放率跟随你的设定
+playbackRate = ClientPrefs.songSpeed;
+flixel.FlxG.sound.music.pitch = playbackRate; // 同步改变音乐的音调/速度
+
 
 		keysArray = [
 			'note_left',
