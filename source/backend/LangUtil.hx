@@ -60,6 +60,24 @@ class LangUtil {
             'desc_human_bot' => 'Bot 自动打歌时会产生模仿人类的毫秒误差，不再全是 0ms。',
             'opt_rainbow' => 'RGB 帧率显示 (Rainbow FPS)',
             'desc_rainbow' => '让左上角的 FPS 计数器疯狂闪烁彩虹光芒。'
+            'opt_speed' => '全局曲速倍率 (Song Speed)',
+        'desc_speed' => '改变歌曲的播放速度和谱面下落速度 (1.0x - 2.0x)。',
+        'opt_sus_alpha' => '长按音符透明度 (Sustain Alpha)',
+        'desc_sus_alpha' => '降低长按音符的可见度，防止挡住视线。',
+        'opt_drain_cap' => '对手吸血保护 (Drain Cap)',
+        'desc_drain_cap' => '硬核 Mod 必备：对手唱歌扣血时，最多只会扣到 10%，不会直接让你死。',
+        'opt_hitsound' => '打击音效音量 (Hit Sound)',
+        'desc_hitsound' => '像 osu! 一样，每次精准击中音符时播放清脆的音效。'
+            'opt_dynamic_color' => '动态生命条染色',
+'desc_dynamic_color' => '生命条颜色会根据对手和玩家的角色属性实时变换 (内鬼 V4 风格)。',
+'opt_sidehud' => '侧边信息栏 (Side HUD)',
+'desc_sidehud' => '在屏幕左侧显示实时的判定、准确率、Miss数等信息。',
+'opt_zoom_beat' => '节拍镜头缩放',
+'desc_zoom_beat' => '镜头会随着音乐节拍进行有节奏的缩放。',
+'opt_safe_frames' => '判定帧调节',
+'desc_safe_frames' => '调整击中音符的时间窗口（数值越高判定越松）。',
+'opt_score_zoom' => '分数文本缩放',
+'desc_score_zoom' => '每当你击中音符时，分数显示栏会产生缩放动画。'
         ],
 
         // ==========================================
@@ -105,6 +123,17 @@ class LangUtil {
             'desc_human_bot' => 'Botplay will have slight human-like delays instead of hitting perfect 0ms.',
             'opt_rainbow' => 'Rainbow FPS',
             'desc_rainbow' => 'Makes the FPS counter cycle through RGB colors.'
+            'opt_dynamic_color' => 'Dynamic Bar Color',
+'desc_dynamic_color' => 'Health bar colors change based on the current characters (Impostor V4 style).',
+'opt_sidehud' => 'Side HUD',
+'desc_sidehud' => 'Displays song statistics on the left side of the screen.',
+'opt_zoom_beat' => 'Camera Zoom on Beat',
+'desc_zoom_beat' => 'The camera gently pulses to the beat of the music.',
+'opt_safe_frames' => 'Safe Frames',
+'desc_safe_frames' => 'Adjust the timing window for hitting notes (higher is easier).',
+'opt_score_zoom' => 'Score Text Zoom',
+'desc_score_zoom' => 'The score text bounces whenever you hit a note.'
+
         ],
 
         // ==========================================
