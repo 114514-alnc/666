@@ -79,6 +79,50 @@ class ExtraOptionsSubState extends BaseOptionsSubState {
             true
         );
       addOption(option);
+     // ==========================================
+// ⚙️ 第五区：硬核音游辅助 (Rhythm Helpers)
+// ==========================================
+
+// 曲速调节 (范围 1.0 到 3.0，步长 0.1)
+var option:Option = new Option(LangUtil.get('opt_speed'), LangUtil.get('desc_speed'), 'songSpeed', 'float', 1.0);
+option.scrollSpeed = 1.5;
+option.minValue = 1.0;
+option.maxValue = 3.0;
+option.changeValue = 0.1;
+addOption(option);
+
+// 面条透明度 (范围 0.1 到 1.0，步长 0.1)
+var option:Option = new Option(LangUtil.get('opt_sus_alpha'), LangUtil.get('desc_sus_alpha'), 'sustainAlpha', 'float', 1.0);
+option.scrollSpeed = 1.5;
+option.minValue = 0.1;
+option.maxValue = 1.0;
+option.changeValue = 0.1;
+option.decimals = 1;
+addOption(option);
+
+// 吸血保护 (开关)
+var option:Option = new Option(LangUtil.get('opt_drain_cap'), LangUtil.get('desc_drain_cap'), 'opponentDrainCap', 'bool', false);
+addOption(option);
+
+// 打击音效音量 (范围 0.0 到 1.0)
+var option:Option = new Option(LangUtil.get('opt_hitsound'), LangUtil.get('desc_hitsound'), 'hitSoundVolume', 'float', 0.0);
+option.scrollSpeed = 1.5;
+option.minValue = 0.0;
+option.maxValue = 1.0;
+option.changeValue = 0.1;
+option.decimals = 1;
+addOption(option);
+// --- 🎨 视觉增强 (Visual Buffs) ---
+addOption(new Option(LangUtil.get('opt_dynamic_color'), LangUtil.get('desc_dynamic_color'), 'dynamicBarColor', 'bool', true));
+addOption(new Option(LangUtil.get('opt_sidehud'), LangUtil.get('desc_sidehud'), 'sideHud', 'bool', false));
+addOption(new Option(LangUtil.get('opt_zoom_beat'), LangUtil.get('desc_zoom_beat'), 'cameraZoomOnBeat', 'bool', true));
+addOption(new Option(LangUtil.get('opt_score_zoom'), LangUtil.get('desc_score_zoom'), 'scoreZoom', 'bool', true));
+
+// --- 🕹️ 判定控制 (Judgment Control) ---
+var option:Option = new Option(LangUtil.get('opt_safe_frames'), LangUtil.get('desc_safe_frames'), 'safeFrames', 'int', 10);
+option.minValue = 1;
+option.maxValue = 20;
+addOption(option);
 
         super();
     }
