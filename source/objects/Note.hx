@@ -445,6 +445,11 @@ class Note extends FlxSprite
 					wasGoodHit = true;
 			}
 		}
+        if (isSustainNote) {
+    alpha = ClientPrefs.sustainAlpha;
+    // 如果自带多重透明度逻辑，可以这么写:
+    // multAlpha = ClientPrefs.sustainAlpha;
+}
 
 		if (tooLate && !inEditor)
 		{
