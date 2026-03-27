@@ -195,4 +195,3 @@ class LangUtil {
             'opt_pitch' => 'Динамический шаг (V-Slice)'
         ]
     ]
- ｝
