@@ -1,4 +1,5 @@
 package objects;
+import flixel.text.FlxText
 
 enum Alignment
 {
@@ -13,6 +14,9 @@ class Alphabet extends FlxSpriteGroup
 
 	public var bold:Bool = false;
 	public var letters:Array<AlphaCharacter> = [];
+// 添加下面这一行
+    public var ttfText:flixel.text.FlxText; 
+
 
 	public var isMenuItem:Bool = false;
 	public var targetY:Int = 0;
@@ -90,6 +94,7 @@ class Alphabet extends FlxSpriteGroup
 
 	public function clearLetters()
 	{
+		if (ttfText != null) ttfText.visible = false; 
 		var i:Int = letters.length;
 		while (i > 0)
 		{
@@ -187,6 +192,39 @@ class Alphabet extends FlxSpriteGroup
 
 	private function createLetters(newText:String)
 	{
+		if (backend.ClientPrefs.useCJKFont) // 如果你在 ClientPrefs 里定义在 data 里，请用 .data.useCJKFont
+    {
+        if (ttfText == null) 
+        {
+            // 创建 TTF 文本对象
+            ttfText = new flixel.text.FlxText(0, 0, 0, newText, 55);
+            // 这里的 Paths.font("Chinese.ttf") 会读取 assets/fonts/Chinese.ttf
+            ttfText.setFormat(Paths.font("Chinese.ttf"), 55, flixel.util.FlxColor.WHITE, LEFT, flixel.text.FlxTextBorderStyle.OUTLINE, flixel.util.FlxColor.BLACK);
+            ttfText.borderSize = 3;
+            ttfText.antialiasing = ClientPrefs.data.antialiasing;
+            add(ttfText);
+        }
+        
+        ttfText.text = newText;
+        
+        // 同步粗体（粗体时字号大一点）
+        ttfText.size = bold ? 60 : 45;
+        
+        // 同步对齐方式
+        switch(alignment) {
+            case CENTERED: ttfText.alignment = CENTER;
+            case RIGHT: ttfText.alignment = RIGHT;
+            default: ttfText.alignment = LEFT;
+        }
+
+        // 同步缩放
+        ttfText.scale.set(scaleX, scaleY);
+        ttfText.updateHitbox();
+        if (ttfText != null) ttfText.visible = true;
+        // 关键：直接返回，跳过后面生成 AlphaCharacter 贴图的逻辑
+        return; 
+    }
+    // --- 拦截结束 ---
 		var consecutiveSpaces:Int = 0;
 
 		var xPos:Float = 0;
