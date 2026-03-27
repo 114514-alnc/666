@@ -189,7 +189,51 @@ class ClientPrefs {
 	public static var defaultMobileBinds:Map<String, Array<MobileInputID>> = null;
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
 	public static var defaultButtons:Map<String, Array<FlxGamepadInputID>> = null;
+    public static function saveSettings() {
+        var save:FlxSave = new FlxSave();
+        save.bind('sp_engine_prefs', 'sp_group'); // 绑定专属存储空间
 
+        // --- 基础设置 ---
+        save.data.downScroll = downScroll;
+        save.data.middleScroll = middleScroll;
+        save.data.language = language;
+
+        // --- 性能设置 ---
+        save.data.gpuCaching = gpuCaching;
+        save.data.autoGC = autoGC;
+
+        // --- 视觉与 HUD ---
+        save.data.useCJKFont = useCJKFont;
+        save.data.dynamicBarColor = dynamicBarColor;
+        save.data.sideHud = sideHud;
+
+        // --- 音游增强 ---
+        save.data.songSpeed = songSpeed;
+        save.data.opponentDrainCap = opponentDrainCap;
+        save.data.hitSoundVolume = hitSoundVolume;
+        save.data.safeFrames = safeFrames;
+
+        save.flush(); // 强制写入物理文件
+    }
+
+    public static function loadPrefs() {
+        var save:FlxSave = new FlxSave();
+        save.bind('sp_engine_prefs', 'sp_group');
+
+        // --- 检查并读取 ---
+        if (save.data.language != null) language = save.data.language;
+        if (save.data.useCJKFont != null) useCJKFont = save.data.useCJKFont;
+        if (save.data.sideHud != null) sideHud = save.data.sideHud;
+        if (save.data.dynamicBarColor != null) dynamicBarColor = save.data.dynamicBarColor;
+        
+        // --- 数值类读取 ---
+        if (save.data.songSpeed != null) songSpeed = save.data.songSpeed;
+        if (save.data.safeFrames != null) safeFrames = save.data.safeFrames;
+        if (save.data.hitSoundVolume != null) hitSoundVolume = save.data.hitSoundVolume;
+
+        // 刷新判定帧
+        backend.Conductor.safeFrames = safeFrames;
+	}
 	public static function resetKeys(controller:Null<Bool> = null) //Null = both, False = Keyboard, True = Controller
 	{
 		if(controller != true)
