@@ -132,7 +132,36 @@ class LangUtil {
 'opt_safe_frames' => 'Safe Frames',
 'desc_safe_frames' => 'Adjust the timing window for hitting notes (higher is easier).',
 'opt_score_zoom' => 'Score Text Zoom',
-'desc_score_zoom' => 'The score text bounces whenever you hit a note.'
+'desc_score_zoom' => 'The score text bounces whenever you hit a note.',
+        // --- Visuals & Display ---
+        'opt_cjk' => 'Global CJK Font',
+        'desc_cjk' => 'Replaces default alphabet sprites with a TTF font to support Chinese/Japanese text.',
+        'opt_lane' => 'Lane Underlay',
+        'desc_lane' => 'Adds a dark semi-transparent background behind the notes (osu! style).',
+        'opt_vsplash' => 'V-Slice 3D Splashes',
+        'desc_vsplash' => 'Replaces Sick rating sparks with V-Slice styled 3D impact splashes.',
+        'opt_camzoom' => 'Dynamic Camera Zoom',
+        'desc_camzoom' => 'Camera bumps and zooms intensely on heavy note hits.',
+
+        // --- Mobile & Storage ---
+        'opt_dev' => 'Mobile Dev Mode',
+        'desc_dev' => 'Swipe down with 3 fingers in-game to quickly open the Chart Editor.',
+        'opt_vibe' => 'Haptic Feedback',
+        'desc_vibe' => 'Vibrates your device slightly upon hitting a note.',
+        'opt_folder' => 'Engine Data Folder',
+        'desc_folder' => 'Change the external folder for loading Mods. Requires a restart!',
+        'opt_js_compat' => 'Force JS Mod Compatibility',
+        'desc_js_compat' => 'Tricks mods into thinking they are running on JS Engine to fix script errors.',
+
+        // --- 💥 NEW: Hardcore Rhythm Options ---
+        'opt_speed' => 'Song Speed Multiplier',
+        'desc_speed' => 'Changes the playback speed of the song and notes (1.0x - 2.0x).',
+        'opt_sus_alpha' => 'Sustain Note Opacity',
+        'desc_sus_alpha' => 'Lowers the transparency of hold notes so they don\'t block your view.',
+        'opt_drain_cap' => 'Opponent Drain Cap',
+        'desc_drain_cap' => 'Prevents the opponent from draining your health past 10%. No more instant deaths.',
+        'opt_hitsound' => 'Hit Sound Volume',
+        'desc_hitsound' => 'Plays a snappy "tick" sound when you hit a note (osu! style).'
 
         ],
 
@@ -165,5 +194,5 @@ class LangUtil {
             'opt_modifier' => 'JS Модификаторы нот',
             'opt_pitch' => 'Динамический шаг (V-Slice)'
         ]
-    ];
-}
+    ]
+ ｝
