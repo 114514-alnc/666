@@ -134,8 +134,12 @@ class StorageUtil
 enum abstract StorageType(String) from String to String
 {
 	final forcedPath = '/storage/emulated/0/';
-	final packageNameLocal = 'com.shadowmario.psychengine073';
-	final fileLocal = 'PsychEngine';
+	
+	// 【修改点 1】: 建议将这里改成你在 Project.xml 里的包名，例如 'com.yourname.spengine'
+	final packageNameLocal = 'com.yizhiru.spengine073'; 
+	
+	// 【修改点 2】: 核心文件夹名称，改成你想要的 SP Engine
+	final fileLocal = 'SP Engine'; 
 
 	var EXTERNAL_DATA = "EXTERNAL_DATA";
 	var EXTERNAL_OBB = "EXTERNAL_OBB";
@@ -148,8 +152,11 @@ enum abstract StorageType(String) from String to String
 		final EXTERNAL_DATA = AndroidContext.getExternalFilesDir();
 		final EXTERNAL_OBB = AndroidContext.getObbDir();
 		final EXTERNAL_MEDIA = AndroidEnvironment.getExternalStorageDirectory() + '/Android/media/' + lime.app.Application.current.meta.get('packageName');
-		final EXTERNAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file') + '0.7.3';
-		final EXTERNAL_GLOBAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file');
+		
+		// 【修改点 3】: 删除了原版硬编码的 '0.7.3' 后缀，并强制使用 fileLocal 变量
+		// 这样生成的路径就绝对是 /.SP Engine
+		final EXTERNAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + fileLocal;
+		final EXTERNAL_GLOBAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + fileLocal;
 
 		return switch (str)
 		{
@@ -167,7 +174,9 @@ enum abstract StorageType(String) from String to String
 		final EXTERNAL_DATA = forcedPath + 'Android/data/' + packageNameLocal + '/files';
 		final EXTERNAL_OBB = forcedPath + 'Android/obb/' + packageNameLocal;
 		final EXTERNAL_MEDIA = forcedPath + 'Android/media/' + packageNameLocal;
-		final EXTERNAL = forcedPath + '.' + fileLocal + '0.7.3';
+		
+		// 【修改点 4】: 强制路径下也同步删除 '0.7.3'
+		final EXTERNAL = forcedPath + '.' + fileLocal;
 		final EXTERNAL_GLOBAL = forcedPath + '.' + fileLocal;
 
 		return switch (str)
