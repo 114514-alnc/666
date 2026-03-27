@@ -1,17 +1,21 @@
 name: .SP Engine Android Build
-on: [push, pull_request, workflow_dispatch] # 只要你提交代码或手动点按钮就会开始编译
+on: [push, pull_request, workflow_dispatch]
+
+# 核心修复：设置全局环境变量以适配 Node.js 24
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # v4 实际上已经兼容，但强制 Node24 变量会消除警告
 
       - name: Setup Android NDK
         uses: nttld/setup-ndk@v1
         with:
-          ndk-version: r21e # Psych Engine 推荐的 NDK 版本
+          ndk-version: r21e
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -20,6 +24,7 @@ jobs:
           java-version: '17'
 
       - name: Setup Haxe
+        # 修复点：如果 krdlab 没更新，我们需要确保环境强制运行
         uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.3.4
