@@ -39,7 +39,7 @@ jobs:
           haxelib install flixel-addons --quiet
           haxelib install flixel-ui --quiet
           haxelib install hscript --quiet
-          haxelib git extension-androidvideo https://github.com/openfl/extension-androidvideo --quiet
+          haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
           haxelib install hxCodec --quiet
           # 关键：跳过交互式设置，直接强制完成
           haxelib run lime setup android
