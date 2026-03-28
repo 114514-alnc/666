@@ -29,7 +29,7 @@ jobs:
         with:
           haxe-version: 4.3.4
 
-      - name: Install Libraries
+            - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
           haxelib install lime --quiet
@@ -41,12 +41,14 @@ jobs:
           haxelib install tjson --quiet
           haxelib install SScript --quiet
           haxelib install flxanimate --quiet
-          # 针对报错的库，使用官方稳定版安装
-          haxelib install linc_luajit --quiet
-          haxelib install extension-androidtools --quiet
-          haxelib install hxCodec --quiet
+          # 核心修复：强行从 Git 安装缺失的安卓工具库，不要用普通 install
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
+          haxelib git linc_luajit https://github.com/nebulazhou/linc_luajit --quiet
+          haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
+          # 运行设置
           haxelib run lime setup android
           haxelib run lime setup -y
+
 
 
 
