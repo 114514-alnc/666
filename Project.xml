@@ -30,8 +30,7 @@
 	<haxelib name="hscript" />
 	<haxelib name="lime" />
 	<haxelib name="openfl" />
-	
-	<haxelib name="extension-androidvideo" if="android" /> 
+	<haxelib name="hxCodec" />
 	<haxelib name="hxCodec" if="android" />
 
 	<define name="mobile" />
