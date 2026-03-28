@@ -29,26 +29,22 @@ jobs:
         with:
           haxe-version: 4.3.4
 
-      - name: Install Libraries
+       - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
           
-          # 强制锁定老版本（这是救命的关键！）
+          # 重新锁定的兼容版本
           haxelib install lime 8.1.2 --quiet
           haxelib install openfl 9.3.3 --quiet
           haxelib install flixel 5.5.0 --quiet
           haxelib install flixel-addons 3.2.2 --quiet
           haxelib install flixel-ui 2.5.0 --quiet
-          haxelib install hscript 2.5.3 --quiet
+          haxelib install hscript 2.5.0 --quiet  # 修正：改为 2.5.0
           haxelib install tjson --quiet
-          
-          # SScript 太新也会疯狂报错，锁定 8.1.6
           haxelib install SScript 8.1.6 --quiet
           
-          # 依然使用开发者分支的 flxanimate（为了 loadAtlasEx）
+          # 必须使用 Git 安装的特殊分支
           haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev --quiet
-          
-          # 手机端必备的特殊库
           haxelib git linc_luajit https://github.com/superpowers04/linc_luajit --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
           haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
