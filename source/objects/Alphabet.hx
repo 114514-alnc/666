@@ -1,5 +1,10 @@
 package objects;
-import flixel.text.FlxText
+
+import flixel.group.FlxSpriteGroup;
+import flixel.text.FlxText;
+import flixel.FlxG;
+// ... 其他 import
+
 
 enum Alignment
 {
