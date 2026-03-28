@@ -32,18 +32,19 @@ jobs:
       - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
-          # 使用 --quiet 减少 IO 等待，加上 --notimeout 防止中途断开
           haxelib install lime --quiet
           haxelib install openfl --quiet
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
           haxelib install flixel-ui --quiet
           haxelib install hscript --quiet
+          haxelib install linc_luajit --quiet
+          haxelib git hxvm-luajit https://github.com/nebulazhou/hxvm-luajit --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
           haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
-          haxelib install hxCodec --quiet
-          # 关键：跳过交互式设置，直接强制完成
           haxelib run lime setup android
           haxelib run lime setup -y
+
 
 
       - name: Build Android
