@@ -8,17 +8,21 @@
 
 	<source path="source" />
 	
-	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web" />
-	<assets path="assets/preload" rename="assets" embed="true" />
-	
-	<assets path="plugins" rename="plugins" if="windows" />
-	<assets path="dlls" rename="dlls" if="windows" />
+	<assets path="assets/shared" rename="assets" embed="true" />
 
-	<assets path="assets/fonts" embed="true" />
-	
-	<assets path="assets/videos" embed="false" />
-	<assets path="assets/sounds" embed="true" />
-	<assets path="assets/music" embed="true" />
+<assets path="assets/shared/images" rename="assets/images" embed="true" />
+<assets path="assets/shared/sounds" rename="assets/sounds" embed="true" />
+<assets path="assets/shared/music" rename="assets/music" embed="true" />
+<assets path="assets/shared/data" rename="assets/data" embed="true" />
+<assets path="assets/shared/fonts" rename="assets/fonts" embed="true" />
+<assets path="assets/shared/characters" rename="assets/characters" embed="true" />
+<assets path="assets/shared/weeks" rename="assets/weeks" embed="true" />
+<assets path="assets/shared/stages" rename="assets/stages" embed="true" />
+
+<assets path="assets/shared/mobile" rename="assets/mobile" embed="true" />
+
+<assets path="assets/preload" rename="assets" embed="true" />
+
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
