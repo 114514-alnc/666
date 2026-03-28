@@ -29,7 +29,7 @@ jobs:
         with:
           haxe-version: 4.3.4
 
-      - name: Install Libraries
+            - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
           haxelib install lime --quiet
@@ -40,17 +40,20 @@ jobs:
           haxelib install hscript --quiet
           haxelib install tjson --quiet
           haxelib install SScript --quiet
-          haxelib install flxanimate --quiet
           
-          # 核心修复：如果 git 下不动，尝试直接用 haxelib 官方源安装 luajit
-          haxelib install linc_luajit --quiet
+          # 核心修复 1：flxanimate 必须使用 dev 分支，否则找不到 loadAtlasEx
+          haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev --quiet
           
-          # 其他安卓必备库
+          # 核心修复 2：使用最稳的移动端 Lua 库分支
+          haxelib git linc_luajit https://github.com/superpowers04/linc_luajit --quiet
+          
+          # 核心修复 3：安卓工具与视频库
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
           haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
           
           haxelib run lime setup android
           haxelib run lime setup -y
+
 
 
 
