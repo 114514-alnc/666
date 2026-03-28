@@ -323,7 +323,7 @@ class Paths
     }
     return null;
 }
-
+{
 		return newGraphic;
 	}
 
