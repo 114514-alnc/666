@@ -41,13 +41,17 @@ jobs:
           haxelib install tjson --quiet
           haxelib install SScript --quiet
           haxelib install flxanimate --quiet
-          # 核心修复：强行从 Git 安装缺失的安卓工具库，不要用普通 install
+          
+          # 核心修复：如果 git 下不动，尝试直接用 haxelib 官方源安装 luajit
+          haxelib install linc_luajit --quiet
+          
+          # 其他安卓必备库
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
-          haxelib git linc_luajit https://github.com/nebulazhou/linc_luajit --quiet
           haxelib git hxCodec https://github.com/polybiusproxy/hxCodec --quiet
-          # 运行设置
+          
           haxelib run lime setup android
           haxelib run lime setup -y
+
 
 
 
