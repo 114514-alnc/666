@@ -289,44 +289,44 @@ class Paths
 		newGraphic.destroyOnNoUse = false;
 		currentTrackedAssets.set(file, newGraphic);
 	}
-		public static function returnGraphic(key:String, ?library:String) {
-    var path = getPath('images/$key.png', IMAGE, library);
-    if (OpenInternalAssets.exists(path)) {
-        if (!currentTrackedAssets.exists(path)) {
-            
-            // --- GPU 优化核心开始 ---
-            var bitmap:BitmapData;
-            
-            if (ClientPrefs.gpuCaching) { // 如果设置里开启了 GPU 缓存
-                // 直接从路径加载并利用 GPU 纹理压缩（如果平台支持）
-                bitmap = BitmapData.fromFile(path); 
-            } else {
-                // 普通加载方式
-                bitmap = OpenInternalAssets.getBitmapData(path);
-            }
+			static public function cacheBitmap(file:String, ?bitmap:BitmapData = null, ?allowGPU:Bool = true)
+	{
+		if(bitmap == null)
+		{
+			#if MODS_ALLOWED
+			if (FileSystem.exists(file))
+				bitmap = BitmapData.fromFile(file);
+			else
+			#end
+			{
+				if (OpenFlAssets.exists(file, IMAGE))
+					bitmap = OpenFlAssets.getBitmapData(file);
+			}
 
-            var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
-            
-            if (ClientPrefs.gpuCaching) {
-                // 关键点：告诉 Flixel 这是一个持久化的纹理，不要随便从内存卸载
-                newGraphic.persist = true; 
-                // 某些引擎版本在这里会调用 bitmap.dumpBits() 来释放掉 CPU 端的像素数据，只留 GPU 纹理
-                bitmap.disposeImage(); 
-            }
-            // --- GPU 优化核心结束 ---
+			if(bitmap == null) return null;
+		}
 
-            currentTrackedAssets.set(path, newGraphic);
-        }
-        localTrackedAssets.push(path);
-        return currentTrackedAssets.get(path);
-    }
-    return null;
-}
-{
-		return newGraphic;
+		localTrackedAssets.push(file);
+		if (allowGPU && ClientPrefs.data.cacheOnGPU)
+		{
+			var texture:RectangleTexture = FlxG.stage.context3D.createRectangleTexture(bitmap.width, bitmap.height, BGRA, true);
+			texture.uploadFromBitmapData(bitmap);
+			bitmap.image.data = null;
+			bitmap.dispose();
+			bitmap.disposeImage();
+			bitmap = BitmapData.fromTexture(texture);
+		}
+		var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
+		newGraphic.persist = true;
+		newGraphic.destroyOnNoUse = false;
+		currentTrackedAssets.set(file, newGraphic);
+		return newGraphic; // 确保这里返回新创建的图形
 	}
 
+	// 删除了之前混乱的 returnGraphic 重复定义，统一使用上面的 image 和 cacheBitmap 逻辑
+
 	static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
+
 	{
 		#if sys
 		#if MODS_ALLOWED
