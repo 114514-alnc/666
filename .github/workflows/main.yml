@@ -32,18 +32,18 @@ jobs:
       - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
-          
-          # 重新锁定的兼容版本
           haxelib install lime 8.1.2 --quiet
           haxelib install openfl 9.3.3 --quiet
           haxelib install flixel 5.5.0 --quiet
           haxelib install flixel-addons 3.2.2 --quiet
           haxelib install flixel-ui 2.5.0 --quiet
-          haxelib install hscript 2.5.0 --quiet  # 修正：改为 2.5.0
+          haxelib install hscript 2.5.0 --quiet
           haxelib install tjson --quiet
-          haxelib install SScript 8.1.6 --quiet
           
-          # 必须使用 Git 安装的特殊分支
+          # 核心修复：不要安装 8.1.6，改用目前仍能运行的旧版或 Git 修复版
+          haxelib install SScript 7.7.0 --quiet
+          
+          # 其他必须的 Git 库
           haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev --quiet
           haxelib git linc_luajit https://github.com/superpowers04/linc_luajit --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet
@@ -51,8 +51,6 @@ jobs:
           
           haxelib run lime setup android
           haxelib run lime setup -y
-
-
 
 
 
