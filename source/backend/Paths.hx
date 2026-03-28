@@ -288,6 +288,7 @@ class Paths
 		newGraphic.persist = true;
 		newGraphic.destroyOnNoUse = false;
 		currentTrackedAssets.set(file, newGraphic);
+	}
 		public static function returnGraphic(key:String, ?library:String) {
     var path = getPath('images/$key.png', IMAGE, library);
     if (OpenInternalAssets.exists(path)) {
