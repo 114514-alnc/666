@@ -29,7 +29,7 @@ jobs:
         with:
           haxe-version: 4.3.4
 
-      - name: Install Libraries
+            - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
           haxelib install lime
@@ -38,6 +38,7 @@ jobs:
           haxelib install flixel-addons
           haxelib install flixel-ui
           haxelib install hscript
+          haxelib git extension-androidvideo https://github.com/openfl/extension-androidvideo
           haxelib install hxCodec
           haxelib run lime setup android
           haxelib run lime setup
