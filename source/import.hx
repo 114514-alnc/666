@@ -7,7 +7,7 @@ import backend.Discord;
 //Psych
 #if LUA_ALLOWED
 import llua.*;
-import llua.Lua;
+//import llua.Lua;
 #end
 
 #if ACHIEVEMENTS_ALLOWED
