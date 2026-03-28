@@ -14,7 +14,7 @@
 <assets path="assets/shared/sounds" rename="assets/sounds" embed="true" />
 <assets path="assets/shared/music" rename="assets/music" embed="true" />
 <assets path="assets/shared/data" rename="assets/data" embed="true" />
-<assets path="assets/shared/fonts" rename="assets/fonts" embed="true" />
+<assets path="assets/fonts" rename="assets/fonts" embed="true" />
 <assets path="assets/shared/characters" rename="assets/characters" embed="true" />
 <assets path="assets/shared/weeks" rename="assets/weeks" embed="true" />
 <assets path="assets/shared/stages" rename="assets/stages" embed="true" />
